@@ -23,7 +23,7 @@ export default defineConfig({
       ],
     }),
   ],
-  base:'/openfly_',
+  base:'/openfly',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
