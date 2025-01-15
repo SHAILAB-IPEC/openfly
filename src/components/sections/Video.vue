@@ -6,7 +6,7 @@
     <el-divider />
 
     <el-row justify="center">
-      <h1 class="section-title">Explainer Video</h1>
+      <h1 class="section-title">Demo</h1>
     </el-row>
 
     <!-- 每个网站的视频的iframe可能不一致，最好在这里手动调整 -->
@@ -14,16 +14,16 @@
       <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="10" >
 
         <!-- local -->
-        <el-container class="video-container">
+        <!-- <el-container class="video-container">
           <video controls muted preload playsinline>
             <source src="/video/video.mp4" type="video/mp4">
           </video>
-        </el-container>
+        </el-container> -->
         
         <!-- bilibili -->
-        <el-container class="video-container">
+        <!-- <el-container class="video-container">
           <iframe src="//www.bilibili.com/blackboard/html5mobileplayer.html?bvid=BV1zw68YsEP9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-        </el-container>
+        </el-container> -->
 
         <!-- youtube -->
         <el-container class="video-container">
@@ -32,6 +32,13 @@
       </el-col>
     </el-row>
   </div>
+
+  <el-divider />
+  <el-row justify="center">
+      <h1 class="section-title">Scene Overview</h1>
+  </el-row>
+
+  <iframe src="visualizer.html" width="100%" height="500px" style="border: none;"></iframe>
 </template>
 
 <style scoped>

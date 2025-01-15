@@ -1,13 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const NUM_INTERP_FRAMES = 10;
+const NUM_INTERP_FRAMES = 50;
 const inputImagePaths = [];
 const outputImagePaths = [];
-const inputImageRootPath = './image_slider/huaqiang/input/';
-const outputImageRootPath = './image_slider/huaqiang/output/';
+const inputImageRootPath = './image_slider/image1/';
+const outputImageRootPath = './image_slider/image2/';
 const minValue = 0;
-const maxValue = 9;
+const maxValue = 49;
 let inputImagePath = ref("");
 let outputImagePath = ref("");
 let sliderValue = ref(0);
@@ -60,7 +60,7 @@ const handleChange = (value) => {
     <el-divider />
 
     <el-row justify="center">
-      <h1 class="section-title">Qualitative Results</h1>
+      <h1 class="section-title">Dataset Preview</h1>
     </el-row>
 
     <el-row justify="center">

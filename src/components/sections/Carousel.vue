@@ -32,10 +32,10 @@ export default {
 }
 </script>
 
-<template>
+<!-- <template>
   <el-row justify="center">
     <el-col :span="24">
-      <!-- 设置轮播图：循环播放、首张图序号、响应式、导航和分页、自动播放 -->
+      设置轮播图：循环播放、首张图序号、响应式、导航和分页、自动播放
       <swiper
         :loop="true"
         :slidesPerView="1"
@@ -68,7 +68,7 @@ export default {
       </swiper>
     </el-col>
   </el-row>
-</template>
+</template> -->
   
 <style>
 
