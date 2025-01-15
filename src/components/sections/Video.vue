@@ -38,7 +38,7 @@
       <h1 class="section-title">Scene Overview</h1>
   </el-row>
 
-  <iframe src="visualizer.html" width="100%" height="500px" style="border: none;"></iframe>
+  <iframe src="/openfly/visualizer.html" width="100%" height="500px" style="border: none;"></iframe>
 </template>
 
 <style scoped>
