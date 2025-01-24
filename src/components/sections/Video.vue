@@ -3,10 +3,18 @@
 
 <template>
   <div>
-    <el-divider />
-
+    <!-- <el-divider /> -->
     <el-row justify="center">
-      <h1 class="section-title">Demo</h1>
+      <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="10" >
+        <el-container class="video-container">
+          <img src="cover.png" alt="cover" style="width: 100%; height: auto;">
+        </el-container>
+      </el-col>
+    </el-row>
+
+    <el-divider />
+    <el-row justify="center">
+      <h1 class="section-title">Video</h1>
     </el-row>
 
     <!-- 每个网站的视频的iframe可能不一致，最好在这里手动调整 -->

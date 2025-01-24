@@ -89,7 +89,7 @@ const buttons = [
   },
   {
     disabled: true,
-    name: "Demo",
+    name: "Video",
     link: "https://junyaohu.github.io/academic-project-page-template-vue",
     component: MagicStick,
   },

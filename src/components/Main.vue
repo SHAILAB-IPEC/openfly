@@ -47,14 +47,14 @@ export default {
   <Abstract/>
   <ImageSlider/>
   <ImageSliderInner/>
-  <Markdown/>
-  <Latex/>
-  <Table/>
-  <Collapse/>
-  <Echart/>
-  <Model3D/>
+  <!-- <Markdown/> -->
+  <!-- <Latex/> -->
+  <!-- <Table/> -->
+  <!-- <Collapse/> -->
+  <!-- <Echart/> -->
+  <!-- <Model3D/> -->
   <!-- <GaussianSplats3D/> -->
-  <SeletionForComparison/>
+  <!-- <SeletionForComparison/> -->
   
   
   <!-- <ImageSelector/> -->

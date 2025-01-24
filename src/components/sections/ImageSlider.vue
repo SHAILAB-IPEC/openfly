@@ -4,8 +4,8 @@ import { ref, onMounted } from 'vue';
 const NUM_INTERP_FRAMES = 50;
 const inputImagePaths = [];
 const outputImagePaths = [];
-const inputImageRootPath = './image_slider/image1/';
-const outputImageRootPath = './image_slider/image2/';
+const inputImageRootPath = './image_slider/compressed_image1/';
+const outputImageRootPath = './image_slider/compressed_image2/';
 const minValue = 0;
 const maxValue = 49;
 let inputImagePath = ref("");
@@ -17,7 +17,7 @@ const preloadInterpolationImages = () => {
   const promises = [];
 
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var inputPath = inputImageRootPath + String(i) + '.png';
+    var inputPath = inputImageRootPath + String(i) + '.jpg';
     const inputImg = new Image();
     inputImagePaths[i] = inputImg;
     const inputPromise = new Promise((resolve) => {
@@ -26,7 +26,7 @@ const preloadInterpolationImages = () => {
     inputImg.src = inputPath;
     promises.push(inputPromise);
 
-    var outputPath = outputImageRootPath + String(i) + '.png';
+    var outputPath = outputImageRootPath + String(i) + '.jpg';
     const outputImg = new Image();
     outputImagePaths[i] = outputImg;
     const outputPromise = new Promise((resolve) => {
