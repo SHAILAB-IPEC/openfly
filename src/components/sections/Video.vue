@@ -7,7 +7,7 @@
     <el-row justify="center">
       <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="10" >
         <el-container class="video-container">
-          <img src="cover.png" alt="cover" style="width: 100%; height: auto;">
+          <img src="./cover.png" alt="cover" style="width: 100%; height: auto;">
         </el-container>
       </el-col>
     </el-row>
