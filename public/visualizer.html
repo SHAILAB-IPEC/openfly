@@ -66,7 +66,7 @@
     </div> -->
 
     <div class="row">
-      <div class="col-md-2 px-1 col-12">       
+      <div class="col-md-2 px-1 col-12">
 
         <div class="mb-2" id="task-checkbox-group">
           <h5 class="mb-1">Task Types</h5>
@@ -148,7 +148,7 @@
           <div class="col-md-12 p-1 d-flex">
             <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
             <div class="video-overlay p-3"><span></span></div>
-
+          </div>
           <div class="col-md-12 p-1 d-flex">
             <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
             <div class="video-overlay p-3"><span></span></div>
@@ -171,218 +171,217 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    // Video metadata
-    const videos = [
-    JSON.parse('{"src": "video/bigcity_around.mp4", "task_id": "task-1"}'),
-    JSON.parse('{"src": "video/smallcity_around.mp4", "task_id": "task-1"}'),
-    JSON.parse('{"src": "video/shanghai_around.mp4", "task_id": "task-2"}'),
-    JSON.parse('{"src": "video/guangzhou_around.mp4", "task_id": "task-2"}'),
-    JSON.parse('{"src": "video/Berkely_round.mp4", "task_id": "task-5"}'),
-    JSON.parse('{"src": "video/Osaka_round.mp4", "task_id": "task-5"}'),
-    JSON.parse('{"src": "video/Stlouis_round.mp4", "task_id": "task-5"}'),
-    JSON.parse('{"src": "video/WashingtonDC_round.mp4", "task_id": "task-5"}'),
-    ];
+    <script>
+      // Video metadata
+      const videos = [
+        JSON.parse('{"src": "video/bigcity_around.mp4", "task_id": "task-1"}'),
+        JSON.parse('{"src": "video/smallcity_around.mp4", "task_id": "task-1"}'),
+        JSON.parse('{"src": "video/shanghai_around.mp4", "task_id": "task-2"}'),
+        JSON.parse('{"src": "video/guangzhou_around.mp4", "task_id": "task-2"}'),
+        JSON.parse('{"src": "video/Berkely_round.mp4", "task_id": "task-5"}'),
+        JSON.parse('{"src": "video/Osaka_round.mp4", "task_id": "task-5"}'),
+        JSON.parse('{"src": "video/Stlouis_round.mp4", "task_id": "task-5"}'),
+        JSON.parse('{"src": "video/WashingtonDC_round.mp4", "task_id": "task-5"}'),
+      ];
 
-    const filters = [
-      'task',
-    ];
+      const filters = [
+        'task',
+      ];
 
-    const maxVisibleVideos = 8;
+      const maxVisibleVideos = 8;
 
-    // Cache references to DOM elements
-    const videoGrid = document.getElementById('video-grid');
-    const videoElements = document.querySelectorAll('video');
-    const videoOverlays = document.querySelectorAll('.video-overlay');
+      // Cache references to DOM elements
+      const videoGrid = document.getElementById('video-grid');
+      const videoElements = document.querySelectorAll('video');
+      const videoOverlays = document.querySelectorAll('.video-overlay');
 
-    // Cache references to filter DOM elements
-    const filterElements = {};
-    filters.forEach(filter => {
-      const checkboxes = document.querySelectorAll(`.${filter}-checkbox`);
-      const checkboxLabels = {};
-      const checkboxCounts = {};
-      checkboxes.forEach(checkbox => {
-        checkboxLabels[checkbox.id] = document.querySelector(`label[for='${checkbox.id}']`);;
-        checkboxCounts[checkbox.id] = document.getElementById(`${checkbox.id}-count`);
+      // Cache references to filter DOM elements
+      const filterElements = {};
+      filters.forEach(filter => {
+        const checkboxes = document.querySelectorAll(`.${filter}-checkbox`);
+        const checkboxLabels = {};
+        const checkboxCounts = {};
+        checkboxes.forEach(checkbox => {
+          checkboxLabels[checkbox.id] = document.querySelector(`label[for='${checkbox.id}']`);;
+          checkboxCounts[checkbox.id] = document.getElementById(`${checkbox.id}-count`);
+        });
+        const allCheckbox = document.getElementById(`${filter}-all-checkbox`);
+        const allCheckboxCount = document.getElementById(`${filter}-all-count`)
+        filterElements[filter] = { checkboxes, checkboxLabels, checkboxCounts, allCheckbox, allCheckboxCount };
       });
-      const allCheckbox = document.getElementById(`${filter}-all-checkbox`);
-      const allCheckboxCount = document.getElementById(`${filter}-all-count`)
-      filterElements[filter] = { checkboxes, checkboxLabels, checkboxCounts, allCheckbox, allCheckboxCount };
-    });
 
-    // Function to perform Fisher-Yates shuffle algorithm
-    function fisherYatesShuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    // Generate array of indices for shuffling
-    const indices = Array.from({ length: videos.length }, (_, index) => index)
-    fisherYatesShuffle(indices)
-
-    // Create an IntersectionObserver to lazily load videos when they come into view
-    const lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(function (video) {
-        if (video.isIntersecting) {
-          video.target.load();
-          observer.unobserve(video.target);
+      // Function to perform Fisher-Yates shuffle algorithm
+      function fisherYatesShuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
         }
-      });
-    });
+      }
 
-    // Function to get selected filters
-    function getSelectedValues(checkboxes) {
-      return Array.from(checkboxes).filter(filter => filter.checked).map(filter => filter.id);
-    }
+      // Generate array of indices for shuffling
+      const indices = Array.from({ length: videos.length }, (_, index) => index)
+      fisherYatesShuffle(indices)
 
-    // Function to filter videos based on selected filters
-    function filterVideos() {
-      // console.time('filterVideos');
-
-      // Stop all video observers
-      // lazyVideoObserver.disconnect();
-
-      // Hide the video grid temporarily to facilitate batch-like editing of the DOM
-      videoGrid.style.display = 'none';
-
-      // Get selected values for each filter
-      const selectedValuesPerFilter = {};
-      filters.forEach(filter => {
-        selectedValuesPerFilter[filter] = new Set(getSelectedValues(filterElements[filter].checkboxes));
-      });
-
-      // Initialize object to keep track of remaining counts for each filter value
-      const remainingCounts = {};
-      filters.forEach(filter => {
-        remainingCounts[filter] = {};
-        filterElements[filter].checkboxes.forEach(checkbox => {
-          remainingCounts[filter][checkbox.id] = 0;
-          remainingCounts[filter]['all'] = 0;
+      // Create an IntersectionObserver to lazily load videos when they come into view
+      const lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (video) {
+          if (video.isIntersecting) {
+            video.target.load();
+            observer.unobserve(video.target);
+          }
         });
       });
 
-      // Iterate through shuffled videos and apply filters
-      let visibleCount = 0, totalCount = 0;
-      let video, matchStatusArray, selectedValues, filterIndex, filter;
-      for (let i = 0; i < indices.length; i++) { // Slow
-        video = videos[indices[i]];
-
-        // Generate match status array for each filter
-        matchStatusArray = [];
-        for (filterIndex = 0; filterIndex < filters.length; filterIndex++) {
-          filter = filters[filterIndex];
-          selectedValues = selectedValuesPerFilter[filters[filterIndex]];
-          matchStatusArray.push(selectedValues.size === 0 || selectedValues.has(video[`${filter}_id`]));
-        }
-
-        // Increment remaining counts applicable filter values
-        for (filterIndex = 0; filterIndex < filters.length; filterIndex++) {
-          // Ignoring current filter, check if all other filters match
-          filter = filters[filterIndex];
-          if (matchStatusArray.every((status, statusIndex) => statusIndex === filterIndex || status)) {
-            remainingCounts[filter][video[`${filter}_id`]]++;
-            remainingCounts[filter]['all']++;
-          }
-        }
-
-        // Show videos that match all filters
-        if (matchStatusArray.every(status => status)) {
-          if (visibleCount < maxVisibleVideos) {
-            // Set source and poster of the video element
-            // videoElements[visibleCount].src = `https://droid-dataset.github.io/visualizer/${video.src}`;
-            // videoElements[visibleCount].poster = `https://droid-dataset.github.io/visualizer/${video.poster}`;
-            videoElements[visibleCount].src = `${video.src}`
-
-            // Make the video element visible
-            videoElements[visibleCount].style.display = '';
-
-            // Start observing the video element for lazy loading
-            // lazyVideoObserver.observe(videoElements[visibleCount]);
-
-            // Update the video overlay
-            videoOverlays[visibleCount].style.display = '';
-
-            visibleCount++;
-          }
-          totalCount++;
-        }
+      // Function to get selected filters
+      function getSelectedValues(checkboxes) {
+        return Array.from(checkboxes).filter(filter => filter.checked).map(filter => filter.id);
       }
 
+      // Function to filter videos based on selected filters
+      function filterVideos() {
+        // console.time('filterVideos');
 
-      // Hide any unused video containers
-      for (let i = visibleCount; i < maxVisibleVideos; i++) {
-        videoElements[i].style.display = 'none';
-        videoElements[i].src = '';
-        videoOverlays[i].style.display = 'none';
-      }
+        // Stop all video observers
+        // lazyVideoObserver.disconnect();
 
-      // Reveal the video grid after applying DOM edits
-      videoGrid.style.display = '';
+        // Hide the video grid temporarily to facilitate batch-like editing of the DOM
+        videoGrid.style.display = 'none';
 
-      // Update checkbox labels to show remaining counts
-      filters.forEach(filter => {
-        filterElements[filter].checkboxes.forEach(checkbox => {
-          const label = filterElements[filter].checkboxLabels[checkbox.id];
-          const count = remainingCounts[filter][checkbox.id];
-          filterElements[filter].checkboxCounts[checkbox.id].textContent = count;
-          if (count === 0) {
-            checkbox.disabled = true;
-            label.classList.add('text-muted');
-          } else {
-            checkbox.disabled = false;
-            label.classList.remove('text-muted');
-          }
+        // Get selected values for each filter
+        const selectedValuesPerFilter = {};
+        filters.forEach(filter => {
+          selectedValuesPerFilter[filter] = new Set(getSelectedValues(filterElements[filter].checkboxes));
         });
-        filterElements[filter].allCheckboxCount.textContent = remainingCounts[filter]['all'];
-      });
 
-      // Reshuffle indices
-      fisherYatesShuffle(indices);
+        // Initialize object to keep track of remaining counts for each filter value
+        const remainingCounts = {};
+        filters.forEach(filter => {
+          remainingCounts[filter] = {};
+          filterElements[filter].checkboxes.forEach(checkbox => {
+            remainingCounts[filter][checkbox.id] = 0;
+            remainingCounts[filter]['all'] = 0;
+          });
+        });
 
-      // console.timeEnd('filterVideos');
-    }
+        // Iterate through shuffled videos and apply filters
+        let visibleCount = 0, totalCount = 0;
+        let video, matchStatusArray, selectedValues, filterIndex, filter;
+        for (let i = 0; i < indices.length; i++) { // Slow
+          video = videos[indices[i]];
 
-    // Function to set up listener for each group of checkboxes
-    function setupCheckboxGroupListener(checkboxGroupId, checkboxes, allCheckbox) {
-      document.getElementById(checkboxGroupId).addEventListener('change', function (event) {
-        // console.time('checkboxGroupEventListener');
-        if (event.target === allCheckbox) {
-          const noneSelected = Array.from(checkboxes).every(checkbox => !checkbox.checked);
-          if (noneSelected) allCheckbox.checked = true;
+          // Generate match status array for each filter
+          matchStatusArray = [];
+          for (filterIndex = 0; filterIndex < filters.length; filterIndex++) {
+            filter = filters[filterIndex];
+            selectedValues = selectedValuesPerFilter[filters[filterIndex]];
+            matchStatusArray.push(selectedValues.size === 0 || selectedValues.has(video[`${filter}_id`]));
+          }
 
-          if (allCheckbox.checked) {
-            for (const checkbox of checkboxes) {
-              checkbox.checked = false;
+          // Increment remaining counts applicable filter values
+          for (filterIndex = 0; filterIndex < filters.length; filterIndex++) {
+            // Ignoring current filter, check if all other filters match
+            filter = filters[filterIndex];
+            if (matchStatusArray.every((status, statusIndex) => statusIndex === filterIndex || status)) {
+              remainingCounts[filter][video[`${filter}_id`]]++;
+              remainingCounts[filter]['all']++;
             }
           }
-          filterVideos();
-        } else if (event.target.type === 'checkbox') {
-          const anySelected = getSelectedValues(checkboxes).length > 0;
-          allCheckbox.checked = !anySelected;
-          filterVideos();
+
+          // Show videos that match all filters
+          if (matchStatusArray.every(status => status)) {
+            if (visibleCount < maxVisibleVideos) {
+              // Set source and poster of the video element
+              // videoElements[visibleCount].src = `https://droid-dataset.github.io/visualizer/${video.src}`;
+              // videoElements[visibleCount].poster = `https://droid-dataset.github.io/visualizer/${video.poster}`;
+              videoElements[visibleCount].src = `${video.src}`
+
+              // Make the video element visible
+              videoElements[visibleCount].style.display = '';
+
+              // Start observing the video element for lazy loading
+              // lazyVideoObserver.observe(videoElements[visibleCount]);
+
+              // Update the video overlay
+              videoOverlays[visibleCount].style.display = '';
+
+              visibleCount++;
+            }
+            totalCount++;
+          }
         }
-        // console.timeEnd('checkboxGroupEventListener');
+
+
+        // Hide any unused video containers
+        for (let i = visibleCount; i < maxVisibleVideos; i++) {
+          videoElements[i].style.display = 'none';
+          videoElements[i].src = '';
+          videoOverlays[i].style.display = 'none';
+        }
+
+        // Reveal the video grid after applying DOM edits
+        videoGrid.style.display = '';
+
+        // Update checkbox labels to show remaining counts
+        filters.forEach(filter => {
+          filterElements[filter].checkboxes.forEach(checkbox => {
+            const label = filterElements[filter].checkboxLabels[checkbox.id];
+            const count = remainingCounts[filter][checkbox.id];
+            filterElements[filter].checkboxCounts[checkbox.id].textContent = count;
+            if (count === 0) {
+              checkbox.disabled = true;
+              label.classList.add('text-muted');
+            } else {
+              checkbox.disabled = false;
+              label.classList.remove('text-muted');
+            }
+          });
+          filterElements[filter].allCheckboxCount.textContent = remainingCounts[filter]['all'];
+        });
+
+        // Reshuffle indices
+        fisherYatesShuffle(indices);
+
+        // console.timeEnd('filterVideos');
+      }
+
+      // Function to set up listener for each group of checkboxes
+      function setupCheckboxGroupListener(checkboxGroupId, checkboxes, allCheckbox) {
+        document.getElementById(checkboxGroupId).addEventListener('change', function (event) {
+          // console.time('checkboxGroupEventListener');
+          if (event.target === allCheckbox) {
+            const noneSelected = Array.from(checkboxes).every(checkbox => !checkbox.checked);
+            if (noneSelected) allCheckbox.checked = true;
+
+            if (allCheckbox.checked) {
+              for (const checkbox of checkboxes) {
+                checkbox.checked = false;
+              }
+            }
+            filterVideos();
+          } else if (event.target.type === 'checkbox') {
+            const anySelected = getSelectedValues(checkboxes).length > 0;
+            allCheckbox.checked = !anySelected;
+            filterVideos();
+          }
+          // console.timeEnd('checkboxGroupEventListener');
+        });
+      }
+
+      // Set up event listener for checkbox group
+      filters.forEach(filter => {
+        const { checkboxes, allCheckbox } = filterElements[filter];
+        setupCheckboxGroupListener(`${filter}-checkbox-group`, checkboxes, allCheckbox);
       });
-    }
 
-    // Set up event listener for checkbox group
-    filters.forEach(filter => {
-      const { checkboxes, allCheckbox } = filterElements[filter];
-      setupCheckboxGroupListener(`${filter}-checkbox-group`, checkboxes, allCheckbox);
-    });
+      // Initial filtering of videos
+      filterVideos();
 
-    // Initial filtering of videos
-    filterVideos();
-
-    // Hide page overlay used for preventing user interaction until DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('page-overlay').style.display = 'none';
-    });
-  </script>
+      // Hide page overlay used for preventing user interaction until DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('page-overlay').style.display = 'none';
+      });
+    </script>
 </body>
 
 </html>
