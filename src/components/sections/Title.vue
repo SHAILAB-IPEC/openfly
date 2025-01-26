@@ -7,7 +7,7 @@ import { Document, Files, MagicStick, Picture, DataAnalysis, Film } from '@eleme
 const logo = './logo.png'
 
 // 标题
-const title = 'OpenFly: A Versatile Toolchain and a High-Quality Benchmark for Aerial Vision-and-Language Navigation'
+const title = 'A Versatile Toolchain and Large-scale Benchmark for Aerial Vision-Language Navigation'
 
 // 标题颜色
 const title_color = '#000000'

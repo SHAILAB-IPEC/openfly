@@ -85,7 +85,7 @@ const handleChange = (value) => {
                   </template>
                 </el-skeleton>
                 <!-- 图片路径 -->
-                <span class="demonstration">input: {{ inputImagePath }}</span>
+                <!-- <span class="demonstration">input: {{ inputImagePath }}</span> -->
               </div>
             </div>
           </el-col>
@@ -109,7 +109,7 @@ const handleChange = (value) => {
                   </template>
                 </el-skeleton>
                 <!-- 图片路径 -->
-                <span class="demonstration">output: {{ outputImagePath }}</span>
+                <!-- <span class="demonstration">output: {{ outputImagePath }}</span> -->
               </div>
             </div>
           </el-col>

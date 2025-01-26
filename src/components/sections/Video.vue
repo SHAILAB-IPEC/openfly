@@ -14,9 +14,9 @@ const cover = './cover.png'
       </el-col>
     </el-row>
 
-    <el-divider />
+    <!-- <el-divider /> -->
     <el-row justify="center">
-      <h1 class="section-title">Video</h1>
+      <!-- <h1 class="section-title">Video</h1> -->
     </el-row>
 
     <!-- 每个网站的视频的iframe可能不一致，最好在这里手动调整 -->
@@ -36,9 +36,9 @@ const cover = './cover.png'
         </el-container> -->
 
         <!-- youtube -->
-        <el-container class="video-container">
+        <!-- <el-container class="video-container">
           <iframe src="https://www.youtube.com/embed/wjZofJX0v4M?si=BFvRyc3n3fFV_f1G" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </el-container>
+        </el-container> -->
       </el-col>
     </el-row>
   </div>
