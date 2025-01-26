@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { VueCompareImage } from 'vue3-compare-image';
 
-const inputImagePath = './image_inner/line.jpg';
-const outputImagePath = './image_inner/real.jpg';
+const inputImagePath = './image_inner/semantic.png';
+const outputImagePath = './image_inner/original_image.png';
 </script>
 
 <template>
