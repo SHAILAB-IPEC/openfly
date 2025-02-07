@@ -48,7 +48,7 @@ const cover = './cover.png'
       <h1 class="section-title">Scene Overview</h1>
   </el-row>
 
-  <iframe src="/openfly/visualizer.html" width="100%" height="500px" style="border: none;"></iframe>
+  <iframe src="/openfly/visualizer.html" width="100%" height="550px" style="border: none;"></iframe>
 </template>
 
 <style scoped>

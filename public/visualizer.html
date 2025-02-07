@@ -1,432 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <title>FastUMI Dataset Visualizer</title> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <style>
-    #page-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      /* Semi-transparent black */
-      z-index: 9999;
-      /* Ensure it's on top */
-    }
-
-    .checkbox-container {
-      font-size: medium;
-      margin-bottom: -0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      #video-grid {
-        overflow-y: scroll;
-        /* Always show the vertical scrollbar */
-        max-height: 90vh;
-      }
-    }
-
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.65);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      color: white;
-      /* White text */
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      font-size: 0.75rem;
-    }
-
-    .video-overlay:hover {
-      opacity: 1;
-    }
-  </style>
+    <title>视频播放器</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .controls {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #videoPlayer {
+            width: 800px;
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        select {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
-
 <body>
-  <div id="page-overlay"></div>
-
-  <div class="container mt-3">
-    <!-- <div class="row">
-      <h1 class="d-md-block d-none">FastUMI Dataset Visualizer</h1>
-      <h3 class="d-block d-md-none">FastUMI Dataset Visualizer</h3>
-    </div> -->
-
-    <div class="row">
-      <div class="col-md-2 px-1 col-12">
-
-        <div class="mb-2" id="task-checkbox-group">
-          <h5 class="mb-1">Task Types</h5>
-
-          <div class="checkbox-container">
-            <label for="task-all-checkbox">
-              <input type="checkbox" id="task-all-checkbox" checked>
-              All (<span id="task-all-count">0</span>)
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <label for="task-1">
-              <input type="checkbox" class="task-checkbox" id="task-1">
-              UE5+UnrealCV (<span id="task-1-count">0</span>)
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <label for="task-2">
-              <input type="checkbox" class="task-checkbox" id="task-2">
-              UE4+AirSim (<span id="task-2-count">0</span>)
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <label for="task-3">
-              <input type="checkbox" class="task-checkbox" id="task-3">
-              Hierarchical-3DGS (<span id="task-3-count">0</span>)
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <label for="task-4">
-              <input type="checkbox" class="task-checkbox" id="task-4">
-              GTA V (<span id="task-4-count">0</span>)
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <label for="task-5">
-              <input type="checkbox" class="task-checkbox" id="task-5">
-              Google Earth (<span id="task-5-count">0</span>)
-            </label>
-          </div>
-          <div class="checkbox-container">
-          </div>
-          <div class="checkbox-container">
-          </div>
-          <div class="checkbox-container">
-          </div>
-          <div class="checkbox-container">
-          </div>
-          <div class="checkbox-container">
-          </div>
-          <div class="checkbox-container">
-          </div>
+    <div class="controls">
+        <div>
+            <label for="categorySelect">Source: </label>
+            <select id="categorySelect"></select>
         </div>
-
-      </div>
-
-      <div class="col" id="video-grid">
-        <div class="row">
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-          
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
-
-          <div class="col-md-12 p-1 d-flex">
-            <video class="border" autoplay loop muted playsinline width="100%" type="video/mp4"></video>
-            <div class="video-overlay p-3"><span></span></div>
-          </div>
+        <div>
+            <label for="idSelect">ID: </label>
+            <select id="idSelect"></select>
         </div>
-      </div>
     </div>
+    <video id="videoPlayer" controls autoplay loop muted></video>
 
     <script>
-      // Video metadata
-      const videos = [
-        JSON.parse('{"src": "video/bigcity_around.mp4", "task_id": "task-1"}'),
-        JSON.parse('{"src": "video/smallcity_around.mp4", "task_id": "task-1"}'),
-        JSON.parse('{"src": "video/shanghai_around.mp4", "task_id": "task-2"}'),
-        JSON.parse('{"src": "video/guangzhou_around.mp4", "task_id": "task-2"}'),
-        JSON.parse('{"src": "video/airsim_16_round.mp4", "task_id": "task-2"}'),
-        JSON.parse('{"src": "video/airsim_18_round.mp4", "task_id": "task-2"}'),
-        JSON.parse('{"src": "video/airsim_23_round.mp4", "task_id": "task-2"}'),
-        JSON.parse('{"src": "video/airsim_26_round.mp4", "task_id": "task-2"}'),
-        JSON.parse('{"src": "video/gta_round.mp4", "task_id": "task-4"}'),
-        JSON.parse('{"src": "video/Berkely_round.mp4", "task_id": "task-5"}'),
-        JSON.parse('{"src": "video/Osaka_round.mp4", "task_id": "task-5"}'),
-        JSON.parse('{"src": "video/Stlouis_round.mp4", "task_id": "task-5"}'),
-        JSON.parse('{"src": "video/WashingtonDC_round.mp4", "task_id": "task-5"}'),
-      ];
+        // 视频配置（可根据实际需求修改）
+        const videoConfig = {
+            "UE5+UnrealCV": { maxId: 1, path: "video/UE5+UnrealCV" },
+            "UE4+AirSim": { maxId: 5, path: "video/UE4+AirSim" },
+            "Hierarchical-3DGS": { maxId: 0, path: "video/Hierarchical_3DGS" },
+            "GTA V": { maxId: 0, path: "video/GTA_V" },
+            "Google Earth": { maxId: 3, path: "video/Google_Earth" }
+        };
 
-      const filters = [
-        'task',
-      ];
+        // 获取DOM元素
+        const categorySelect = document.getElementById('categorySelect');
+        const idSelect = document.getElementById('idSelect');
+        const videoPlayer = document.getElementById('videoPlayer');
 
-      const maxVisibleVideos = 8;
-
-      // Cache references to DOM elements
-      const videoGrid = document.getElementById('video-grid');
-      const videoElements = document.querySelectorAll('video');
-      const videoOverlays = document.querySelectorAll('.video-overlay');
-
-      // Cache references to filter DOM elements
-      const filterElements = {};
-      filters.forEach(filter => {
-        const checkboxes = document.querySelectorAll(`.${filter}-checkbox`);
-        const checkboxLabels = {};
-        const checkboxCounts = {};
-        checkboxes.forEach(checkbox => {
-          checkboxLabels[checkbox.id] = document.querySelector(`label[for='${checkbox.id}']`);;
-          checkboxCounts[checkbox.id] = document.getElementById(`${checkbox.id}-count`);
-        });
-        const allCheckbox = document.getElementById(`${filter}-all-checkbox`);
-        const allCheckboxCount = document.getElementById(`${filter}-all-count`)
-        filterElements[filter] = { checkboxes, checkboxLabels, checkboxCounts, allCheckbox, allCheckboxCount };
-      });
-
-      // Function to perform Fisher-Yates shuffle algorithm
-      function fisherYatesShuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-      }
-
-      // Generate array of indices for shuffling
-      const indices = Array.from({ length: videos.length }, (_, index) => index)
-      fisherYatesShuffle(indices)
-
-      // Create an IntersectionObserver to lazily load videos when they come into view
-      const lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (video) {
-          if (video.isIntersecting) {
-            video.target.load();
-            observer.unobserve(video.target);
-          }
-        });
-      });
-
-      // Function to get selected filters
-      function getSelectedValues(checkboxes) {
-        return Array.from(checkboxes).filter(filter => filter.checked).map(filter => filter.id);
-      }
-
-      // Function to filter videos based on selected filters
-      function filterVideos() {
-        // console.time('filterVideos');
-
-        // Stop all video observers
-        // lazyVideoObserver.disconnect();
-
-        // Hide the video grid temporarily to facilitate batch-like editing of the DOM
-        videoGrid.style.display = 'none';
-
-        // Get selected values for each filter
-        const selectedValuesPerFilter = {};
-        filters.forEach(filter => {
-          selectedValuesPerFilter[filter] = new Set(getSelectedValues(filterElements[filter].checkboxes));
+        // 初始化类别选择
+        Object.keys(videoConfig).forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
         });
 
-        // Initialize object to keep track of remaining counts for each filter value
-        const remainingCounts = {};
-        filters.forEach(filter => {
-          remainingCounts[filter] = {};
-          filterElements[filter].checkboxes.forEach(checkbox => {
-            remainingCounts[filter][checkbox.id] = 0;
-            remainingCounts[filter]['all'] = 0;
-          });
-        });
-
-        // Iterate through shuffled videos and apply filters
-        let visibleCount = 0, totalCount = 0;
-        let video, matchStatusArray, selectedValues, filterIndex, filter;
-        for (let i = 0; i < indices.length; i++) { // Slow
-          video = videos[indices[i]];
-
-          // Generate match status array for each filter
-          matchStatusArray = [];
-          for (filterIndex = 0; filterIndex < filters.length; filterIndex++) {
-            filter = filters[filterIndex];
-            selectedValues = selectedValuesPerFilter[filters[filterIndex]];
-            matchStatusArray.push(selectedValues.size === 0 || selectedValues.has(video[`${filter}_id`]));
-          }
-
-          // Increment remaining counts applicable filter values
-          for (filterIndex = 0; filterIndex < filters.length; filterIndex++) {
-            // Ignoring current filter, check if all other filters match
-            filter = filters[filterIndex];
-            if (matchStatusArray.every((status, statusIndex) => statusIndex === filterIndex || status)) {
-              remainingCounts[filter][video[`${filter}_id`]]++;
-              remainingCounts[filter]['all']++;
+        // 设置默认选中项
+        categorySelect.value = "UE5+UnrealCV";
+        
+        // 更新ID选择器
+        function updateIdSelect() {
+            const currentCategory = categorySelect.value;
+            const maxId = videoConfig[currentCategory].maxId;
+            
+            idSelect.innerHTML = '';
+            for (let i = 0; i <= maxId; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                idSelect.appendChild(option);
             }
-          }
-
-          // Show videos that match all filters
-          if (matchStatusArray.every(status => status)) {
-            if (visibleCount < maxVisibleVideos) {
-              // Set source and poster of the video element
-              // videoElements[visibleCount].src = `https://droid-dataset.github.io/visualizer/${video.src}`;
-              // videoElements[visibleCount].poster = `https://droid-dataset.github.io/visualizer/${video.poster}`;
-              videoElements[visibleCount].src = `${video.src}`
-
-              // Make the video element visible
-              videoElements[visibleCount].style.display = '';
-
-              // Start observing the video element for lazy loading
-              // lazyVideoObserver.observe(videoElements[visibleCount]);
-
-              // Update the video overlay
-              videoOverlays[visibleCount].style.display = '';
-
-              visibleCount++;
-            }
-            totalCount++;
-          }
         }
 
-
-        // Hide any unused video containers
-        for (let i = visibleCount; i < maxVisibleVideos; i++) {
-          videoElements[i].style.display = 'none';
-          videoElements[i].src = '';
-          videoOverlays[i].style.display = 'none';
+        // 更新视频源
+        function updateVideoSource() {
+            const category = categorySelect.value;
+            const id = idSelect.value;
+            const basePath = videoConfig[category].path;
+            
+            videoPlayer.src = `${basePath}/${id}.mp4`;
+            videoPlayer.load();
+            videoPlayer.play().catch(error => {
+                console.log('自动播放被阻止，用户需要手动点击播放');
+            });
         }
 
-        // Reveal the video grid after applying DOM edits
-        videoGrid.style.display = '';
-
-        // Update checkbox labels to show remaining counts
-        filters.forEach(filter => {
-          filterElements[filter].checkboxes.forEach(checkbox => {
-            const label = filterElements[filter].checkboxLabels[checkbox.id];
-            const count = remainingCounts[filter][checkbox.id];
-            filterElements[filter].checkboxCounts[checkbox.id].textContent = count;
-            if (count === 0) {
-              checkbox.disabled = true;
-              label.classList.add('text-muted');
-            } else {
-              checkbox.disabled = false;
-              label.classList.remove('text-muted');
-            }
-          });
-          filterElements[filter].allCheckboxCount.textContent = remainingCounts[filter]['all'];
+        // 事件监听
+        categorySelect.addEventListener('change', () => {
+            updateIdSelect();
+            updateVideoSource();
         });
 
-        // Reshuffle indices
-        fisherYatesShuffle(indices);
+        idSelect.addEventListener('change', updateVideoSource);
 
-        // console.timeEnd('filterVideos');
-      }
-
-      // Function to set up listener for each group of checkboxes
-      function setupCheckboxGroupListener(checkboxGroupId, checkboxes, allCheckbox) {
-        document.getElementById(checkboxGroupId).addEventListener('change', function (event) {
-          // console.time('checkboxGroupEventListener');
-          if (event.target === allCheckbox) {
-            const noneSelected = Array.from(checkboxes).every(checkbox => !checkbox.checked);
-            if (noneSelected) allCheckbox.checked = true;
-
-            if (allCheckbox.checked) {
-              for (const checkbox of checkboxes) {
-                checkbox.checked = false;
-              }
-            }
-            filterVideos();
-          } else if (event.target.type === 'checkbox') {
-            const anySelected = getSelectedValues(checkboxes).length > 0;
-            allCheckbox.checked = !anySelected;
-            filterVideos();
-          }
-          // console.timeEnd('checkboxGroupEventListener');
-        });
-      }
-
-      // Set up event listener for checkbox group
-      filters.forEach(filter => {
-        const { checkboxes, allCheckbox } = filterElements[filter];
-        setupCheckboxGroupListener(`${filter}-checkbox-group`, checkboxes, allCheckbox);
-      });
-
-      // Initial filtering of videos
-      filterVideos();
-
-      // Hide page overlay used for preventing user interaction until DOM is ready
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('page-overlay').style.display = 'none';
-      });
+        // 初始化
+        updateIdSelect();
+        updateVideoSource();
     </script>
 </body>
-
 </html>
