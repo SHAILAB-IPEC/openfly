@@ -22,7 +22,7 @@ import abstract from '../mds/abstract.mdx';
     <el-row justify="center" style="margin-top: 20px;">
       <el-col :xs="24" :sm="20" :md="20" :lg="16" :xl="12" >
         <video controls preload playsinline style="width: 100%;">
-          <source src="video/demo.mp4" type="video/mp4">
+          <source src="/video/demo.mp4" type="video/mp4">
         </video>
       </el-col>
     </el-row>
