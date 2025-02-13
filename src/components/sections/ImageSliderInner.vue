@@ -51,7 +51,7 @@ const videos = [
 
     <el-row justify="center">
       <!-- add video player -->
-      <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
+      <el-col :xs="24" :sm="20" :md="20" :lg="16" :xl="12" >
         <el-row justify="center" style="margin-top: 20px;">
           <el-col v-for="(video, index) in videos" :key="index" :span="12" style="padding: 0 10px;">
             <video :src="video.src" controls style="width: 100%;"></video>
