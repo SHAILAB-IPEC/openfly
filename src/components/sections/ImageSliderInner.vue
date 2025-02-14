@@ -11,14 +11,17 @@ const videos = [
   {
     src: 'video/success_case/1.mp4'
   },
-  // {
-  //   src: 'video/success_case/2.mp4'
-  // },
   {
     src: 'video/success_case/3.mp4'
   },
   {
-    src: 'video/success_case/4.mp4'
+    src: 'video/success_case/5.mp4'
+  },
+  {
+    src: 'video/success_case/6.mp4'
+  },
+  {
+    src: 'video/success_case/7.mp4'
   }
 ];
 
