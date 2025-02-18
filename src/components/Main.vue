@@ -16,6 +16,8 @@ import Comment from './sections/Comment.vue'
 import Latex from './sections/Latex.vue'
 import Model3D from './sections/Model3D.vue'
 import GaussianSplats3D from './sections/GaussianSplats3D.vue'
+import Success from './sections/Success.vue'
+import Path from './sections/Path.vue'
 
 export default {
   components: {
@@ -35,7 +37,9 @@ export default {
     Comment,
     Latex,
     Model3D,
-    GaussianSplats3D
+    GaussianSplats3D,
+    Success,
+    Path
   }
 }
 </script>
@@ -45,8 +49,11 @@ export default {
   <Carousel/>
   <Video/>
   <Abstract/>
-  <ImageSlider/>
+  
   <ImageSliderInner/>
+  <Path/>
+  <ImageSlider/>
+  <Success/>
   <!-- <Markdown/> -->
   <!-- <Latex/> -->
   <!-- <Table/> -->
