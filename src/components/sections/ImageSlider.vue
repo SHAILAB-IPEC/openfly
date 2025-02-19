@@ -62,7 +62,12 @@ const handleChange = (value) => {
     <el-row justify="center">
       <h1 class="section-title">Dataset Preview</h1>
     </el-row>
-
+    
+    <el-row justify="center">
+      <div class="el-col el-col-24 el-col-xs-24 el-col-sm-20 el-col-md-20 el-col-lg-16 el-col-xl-12" style="margin-top:20px; color: #4A4A4A;">
+        The OpenFly platform collected 100K+ diverse UAV VLN data samples (trajectories, actions, images, and instructions) across 18 scenarios in 5 distinct simulation environments.
+      </div>
+    </el-row>
     <el-row justify="center">
       <el-col>
         <el-row justify="center" :gutter="20">

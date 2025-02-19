@@ -32,8 +32,19 @@ export default {
 }
 </script>
 
-<!-- <template>
-  <el-row justify="center">
+<script setup>
+const cover = './cover.png'
+</script>
+<template>
+    <el-row justify="center">
+      <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="10" >
+        <el-container class="video-container">
+          <!-- <img src="./cover.png" alt="cover" style="width: 100%; height: auto;"> -->
+          <el-image :src="cover" class="logo" fit="cover" />
+        </el-container>
+      </el-col>
+    </el-row>
+  <!-- <el-row justify="center">
     <el-col :span="24">
       设置轮播图：循环播放、首张图序号、响应式、导航和分页、自动播放
       <swiper
@@ -67,8 +78,8 @@ export default {
         </swiper-slide>
       </swiper>
     </el-col>
-  </el-row>
-</template> -->
+  </el-row> -->
+</template>
   
 <style>
 

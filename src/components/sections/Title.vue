@@ -7,16 +7,16 @@ import { Document, Files, MagicStick, Picture, DataAnalysis, Film } from '@eleme
 const logo = './logo.png'
 
 // 标题
-const title = 'A Versatile Toolchain and Large-scale Benchmark for Aerial Vision-Language Navigation'
+const title = 'OpenFly'
 
 // 标题颜色
 const title_color = '#000000'
 
 // 标题补充，没有则置为''即可
-const title_supp = ''
+const title_supp = 'A Versatile Toolchain and Large-scale Benchmark for Aerial Vision-Language Navigation'
 
 // 标题补充颜色
-const title_supp_color = '#42B883'
+const title_supp_color = '#000000'
 
 // 按钮颜色
 const btn_color = '#444444'
@@ -24,22 +24,52 @@ const btn_color = '#444444'
 // 作者清单（包含作者姓名、头像、主页、地址序号）
 const authors = [
   {
-    name: "Your Name",
+    name: "Yunpeng Gao",
     icon: "./icon/junyaohu.jpg",
-    homepage: "https://junyaohu.github.io/",
+    // homepage: "https://",
     address_flag: "1,#"
   },
   {
-    name: "Anya Forger",
+    name: "Chenhui Li",
     icon: "./icon/anya.jpg",
-    homepage: "https://www.bilibili.com/video/BV1jv4y1P7Bb",
-    address_flag: "2,#"
+    // homepage: "https://",
+    address_flag: "1,#"
   },
   {
-    name: "BugCat Capoo",
+    name: "Zhongrui You",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1,#"
+  },
+  {
+    name: "Junli Liu",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1,#"
+  },
+  {
+    name: "Zhen Li",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1,#"
+  },
+  {
+    name: "Zhigang Wang",
     icon: "./icon/capoo.webp",
-    homepage: "https://zh.moegirl.org.cn/%E7%8C%AB%E7%8C%AB%E8%99%AB%E5%92%96%E6%B3%A2",
+    // homepage: "https://",
     address_flag: "1,*"
+  },
+  {
+    name: "Bin Zhao",
+    icon: "./icon/capoo.webp",
+    // homepage: "https://",
+    address_flag: "1,*"
+  },
+  {
+    name: "Xuelong Li",
+    icon: "./icon/capoo.webp",
+    homepage: "https://scholar.google.com.hk/citations?hl=zh-CN&user=ahUibskAAAAJ",
+    address_flag: "1,2,*"
   },
 ]
 
@@ -47,15 +77,15 @@ const authors = [
 const addresses = [
   {
     address_flag: "1",
-    name: "Home University",
+    name: "Shanghai AI Laboratory",
     icon: "./icon/home.png",
-    homepage: "https://github.com/hmuniversity"
+    homepage: "https://www.shlab.org.cn/"
   },
   {
     address_flag: "2",
-    name: "IKUN University",
+    name: "TeleAI",
     icon: "./icon/ikun.avif",
-    homepage: "https://www.bilibili.com/video/BV178411Y7QB"
+    // homepage: "https://"
   },
 ]
 
@@ -87,12 +117,12 @@ const buttons = [
     link: "https://github.com/JunyaoHu/academic-project-page-template-vue",
     component: Files,
   },
-  {
-    disabled: true,
-    name: "Video",
-    link: "https://junyaohu.github.io/academic-project-page-template-vue",
-    component: MagicStick,
-  },
+  // {
+  //   disabled: true,
+  //   name: "Video",
+  //   link: "https://junyaohu.github.io/academic-project-page-template-vue",
+  //   component: MagicStick,
+  // },
   {
     disabled: true,
     name: "Dataset",
@@ -122,6 +152,7 @@ const buttons = [
       <el-col :span="20">
         <h1 class="paper-title">
           <span v-if="title" :style="{color:title_color}"> {{ title }}</span>
+          <br>
           <span v-if="title_supp" :style="{color:title_supp_color}"> {{ title_supp }}</span>
         </h1>
       </el-col>
@@ -129,21 +160,26 @@ const buttons = [
 
     <!-- 作者名单 -->
     <el-row justify="center">
-      <a :href=author.homepage v-for="author in authors">
-        <el-button class="title-button" type="primary" text>
-          <!-- <el-avatar v-if="author.icon" :size="40" :src="author.icon" /> -->
-          <span class="author">
-            {{ author.name }}<sup v-if="author.address_flag" class="name_sup">{{ author.address_flag }}</sup>
-          </span>
-        </el-button>
-      </a>
+    <el-col :xs="24" :sm="20" :md="20" :lg="16" :xl="12" >
+    <el-row justify="center">
+      
+        <a :href=author.homepage v-for="author in authors">
+          <el-button class="title-button" type="primary" text>
+            <!-- <el-avatar v-if="author.icon" :size="40" :src="author.icon" /> -->
+            <span class="author">
+              {{ author.name }}<sup v-if="author.address_flag" class="name_sup">{{ author.address_flag }}</sup>
+            </span>
+          </el-button>
+        </a>
+    </el-row>
+    </el-col>
     </el-row>
 
     <!-- 地址名单 -->
     <el-row justify="center">
       <a :href=address.homepage v-for="address in addresses">
         <el-button class="title-button" type="primary" text>
-          <el-avatar v-if="address.icon" :size="40" :src="address.icon" />
+          <!-- <el-avatar v-if="address.icon" :size="40" :src="address.icon" /> -->
           <span class="address">
             <sup v-if="address.address_flag" class="address_sup">{{ address.address_flag }}</sup>{{ address.name }}
           </span>
@@ -193,12 +229,12 @@ const buttons = [
 
 /* 姓名和地址按钮 */
 .title-button {
-  margin: 10px 3px;
+  margin: 10px -5px;
 }
 
 /* 姓名和地址按钮光标悬浮 */
 .title-button:hover {
-  margin: 10px 8px;
+  margin: 10px 4px;
 }
 
 /* 引导材料按钮 */

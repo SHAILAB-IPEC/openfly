@@ -1,18 +1,8 @@
-<script setup>
-const cover = './cover.png'
-</script>
 
 <template>
   <div>
     <!-- <el-divider /> -->
-    <el-row justify="center">
-      <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="10" >
-        <el-container class="video-container">
-          <!-- <img src="./cover.png" alt="cover" style="width: 100%; height: auto;"> -->
-          <el-image :src="cover" class="logo" fit="cover" />
-        </el-container>
-      </el-col>
-    </el-row>
+
 
     <!-- <el-divider /> -->
     <el-row justify="center">
@@ -46,6 +36,11 @@ const cover = './cover.png'
   <el-divider />
   <el-row justify="center">
       <h1 class="section-title">Scene Overview</h1>
+  </el-row>
+  <el-row justify="center">
+    <div class="el-col el-col-24 el-col-xs-24 el-col-sm-20 el-col-md-20 el-col-lg-16 el-col-xl-12" style="margin-top:20px; color: #4A4A4A;">
+        The OpenFly platform integrates five simulators utilizing  diverse digital assets and simulation tools/plugins—including Unreal  Engine with UnrealCV, Unreal Engine with AirSim, GTA V with Script Hook  V, Google Earth with Google Earth Studio, and 3D Gaussian Splatting with  SIBR viewers—to collect large-scale heterogeneous data. These  simulators collectively cover 18 high-fidelity scenes.
+    </div>
   </el-row>
 
   <iframe src="/openfly/visualizer.html" width="100%" height="550px" style="border: none;"></iframe>

@@ -18,6 +18,8 @@ import Model3D from './sections/Model3D.vue'
 import GaussianSplats3D from './sections/GaussianSplats3D.vue'
 import Success from './sections/Success.vue'
 import Path from './sections/Path.vue'
+import Toolchain from './sections/Toolchain.vue'
+import Model from './sections/Model.vue'
 
 export default {
   components: {
@@ -39,7 +41,9 @@ export default {
     Model3D,
     GaussianSplats3D,
     Success,
-    Path
+    Path,
+    Toolchain,
+    Model
   }
 }
 </script>
@@ -47,9 +51,11 @@ export default {
 <template>
   <Title/>
   <Carousel/>
-  <Video/>
-  <Abstract/>
   
+  <Abstract/>
+  <Toolchain/>
+  <Model/>
+  <Video/>
   <ImageSliderInner/>
   <Path/>
   <ImageSlider/>
