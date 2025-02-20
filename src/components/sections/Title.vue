@@ -27,49 +27,140 @@ const authors = [
     name: "Yunpeng Gao",
     icon: "./icon/junyaohu.jpg",
     // homepage: "https://",
-    address_flag: "1,#"
+    address_flag: "1,*"
   },
   {
     name: "Chenhui Li",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,#"
+    address_flag: "1,*"
   },
   {
     name: "Zhongrui You",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,#"
+    address_flag: "1,*"
   },
   {
     name: "Junli Liu",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,#"
+    address_flag: "1,*"
   },
   {
     name: "Zhen Li",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,#"
+    address_flag: "1,*"
   },
+  {
+    name: "Pengan Chen",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Qizhi Chen",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Zhonghan Tang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Liansheng Wang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Penghui Yang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Yiwen Zhang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Yuhang Tang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Shuai Liang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Songyi Zhu",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Ziqin Xiong",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Yifei Su",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Xinyi Ye",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Jianan Li",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Yan Ding",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+  {
+    name: "Dong Wang",
+    icon: "./icon/anya.jpg",
+    // homepage: "https://",
+    address_flag: "1"
+  },
+
   {
     name: "Zhigang Wang",
     icon: "./icon/capoo.webp",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1,†"
   },
   {
     name: "Bin Zhao",
     icon: "./icon/capoo.webp",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1,†"
   },
   {
     name: "Xuelong Li",
     icon: "./icon/capoo.webp",
     homepage: "https://scholar.google.com.hk/citations?hl=zh-CN&user=ahUibskAAAAJ",
-    address_flag: "1,2,*"
+    address_flag: "1,2"
   },
 ]
 
@@ -91,7 +182,7 @@ const addresses = [
 
 // 共一和通讯提示
 const con_and_corresponding_author = 
-  "#: Equal Contribution. *: Corresponding Author."
+  "*: Equal Contribution. †: Corresponding Author."
 
 // 最新消息
 const news = "🔥 [2024-12-15] This template project is still under development."
@@ -229,7 +320,7 @@ const buttons = [
 
 /* 姓名和地址按钮 */
 .title-button {
-  margin: 10px -5px;
+  margin: 0px -5px;
 }
 
 /* 姓名和地址按钮光标悬浮 */

@@ -20,6 +20,7 @@ import Success from './sections/Success.vue'
 import Path from './sections/Path.vue'
 import Toolchain from './sections/Toolchain.vue'
 import Model from './sections/Model.vue'
+import Dataset from './sections/Dataset.vue'
 
 export default {
   components: {
@@ -43,7 +44,8 @@ export default {
     Success,
     Path,
     Toolchain,
-    Model
+    Model,
+    Dataset
   }
 }
 </script>
@@ -58,7 +60,8 @@ export default {
   <Video/>
   <ImageSliderInner/>
   <Path/>
-  <ImageSlider/>
+  <!-- <ImageSlider/> -->
+  <Dataset/>
   <Success/>
   <!-- <Markdown/> -->
   <!-- <Latex/> -->
