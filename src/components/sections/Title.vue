@@ -27,49 +27,49 @@ const authors = [
     name: "Yunpeng Gao",
     icon: "./icon/junyaohu.jpg",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1,2*"
   },
   {
     name: "Chenhui Li",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1*"
   },
   {
     name: "Zhongrui You",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1,3*"
   },
   {
     name: "Junli Liu",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1,2*"
   },
   {
     name: "Zhen Li",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1,*"
+    address_flag: "1,4*"
   },
   {
-    name: "Pengan Chen",
+    name: "Pengan CHEN",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,5"
   },
   {
     name: "Qizhi Chen",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,6"
   },
   {
     name: "Zhonghan Tang",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,7"
   },
   {
     name: "Liansheng Wang",
@@ -81,25 +81,25 @@ const authors = [
     name: "Penghui Yang",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,8"
   },
   {
-    name: "Yiwen Zhang",
+    name: "Yiwen Tang",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,2"
   },
   {
     name: "Yuhang Tang",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,2"
   },
   {
     name: "Shuai Liang",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,9"
   },
   {
     name: "Songyi Zhu",
@@ -111,13 +111,13 @@ const authors = [
     name: "Ziqin Xiong",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,4"
   },
   {
     name: "Yifei Su",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,10"
   },
   {
     name: "Xinyi Ye",
@@ -160,7 +160,7 @@ const authors = [
     name: "Xuelong Li",
     icon: "./icon/capoo.webp",
     homepage: "https://scholar.google.com.hk/citations?hl=zh-CN&user=ahUibskAAAAJ",
-    address_flag: "1,2"
+    address_flag: "1,11"
   },
 ]
 
@@ -174,9 +174,63 @@ const addresses = [
   },
   {
     address_flag: "2",
+    name: "Northwestern Polytechnical University",
+    icon: "./icon/home.png",
+    homepage: "https://www.nwpu.edu.cn/"
+  },
+  {
+    address_flag: "3",
+    name: "Beijing University of Posts and Telecommunications",
+    icon: "./icon/home.png",
+    homepage: "https://www.bupt.edu.cn/"
+  },
+  {
+    address_flag: "4",
+    name: "Shanghai Jiao Tong University",
+    icon: "./icon/home.png",
+    homepage: "https://www.sjtu.edu.cn/"
+  },
+  {
+    address_flag: "5",
+    name: "The University of Hong Kong",
+    icon: "./icon/home.png",
+    homepage: "https://www.hku.hk/"
+  },
+  {
+    address_flag: "6",
+    name: "Zhejiang University",
+    icon: "./icon/home.png",
+    homepage: "https://www.zju.edu.cn/"
+  },
+  {
+    address_flag: "7",
+    name: "University of Science and Technology of China",
+    icon: "./icon/home.png",
+    homepage: "https://www.ustc.edu.cn/"
+  },
+  {
+    address_flag: "8",
+    name: "East China University of Science and Technology",
+    icon: "./icon/home.png",
+    homepage: "https://www.ecust.edu.cn/"
+  },
+  {
+    address_flag: "9",
+    name: "Fudan University",
+    icon: "./icon/home.png",
+    homepage: "https://www.fudan.edu.cn/"
+  },
+  {
+    address_flag: "10",
+    name: "Institute of Automation, Chinese Academy of Sciences",
+    icon: "./icon/home.png",
+    homepage: "https://www.ia.cas.cn/"
+  },
+  {
+    address_flag: "11",
     name: "TeleAI",
     icon: "./icon/ikun.avif",
-    // homepage: "https://"
+    homepage: "https://"
   },
 ]
 
@@ -268,14 +322,18 @@ const buttons = [
 
     <!-- 地址名单 -->
     <el-row justify="center">
-      <a :href=address.homepage v-for="address in addresses">
-        <el-button class="title-button" type="primary" text>
-          <!-- <el-avatar v-if="address.icon" :size="40" :src="address.icon" /> -->
-          <span class="address">
-            <sup v-if="address.address_flag" class="address_sup">{{ address.address_flag }}</sup>{{ address.name }}
-          </span>
-        </el-button>
-      </a>
+      <el-col :xs="24" :sm="20" :md="20" :lg="16" :xl="12" >
+      <el-row justify="center">
+        <a :href=address.homepage v-for="address in addresses">
+          <el-button class="title-button" type="primary" text>
+            <!-- <el-avatar v-if="address.icon" :size="40" :src="address.icon" /> -->
+            <span class="address">
+              <sup v-if="address.address_flag" class="address_sup">{{ address.address_flag }}</sup>{{ address.name }}
+            </span>
+          </el-button>
+        </a>
+      </el-row>
+      </el-col>
     </el-row>
 
     <!-- 共一和通讯提示内容 -->
