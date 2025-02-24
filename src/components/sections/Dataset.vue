@@ -1,5 +1,5 @@
 <script setup>
-const dataset = './dataset.png';
+const dataset = './dataset.jpg';
 </script>
 <template>
   <el-divider />
