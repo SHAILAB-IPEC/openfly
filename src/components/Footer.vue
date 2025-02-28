@@ -13,7 +13,7 @@ const links = {
   
   <div class="bg">
     
-    <el-watermark :content="['Lizhen_for_test', 'Academic Project', 'Page Template']" :gap="['60','0']" :z-index="0">
+    <el-watermark :content="[ '']" :gap="['60','0']" :z-index="0">
       <el-row justify="center">
         <p class="footer">
           This template is inspired by 

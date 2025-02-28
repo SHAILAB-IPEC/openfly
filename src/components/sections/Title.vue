@@ -148,13 +148,13 @@ const authors = [
     name: "Zhigang Wang",
     icon: "./icon/capoo.webp",
     // homepage: "https://",
-    address_flag: "1,†"
+    address_flag: "1†"
   },
   {
     name: "Bin Zhao",
     icon: "./icon/capoo.webp",
     // homepage: "https://",
-    address_flag: "1,†"
+    address_flag: "1,2†"
   },
   {
     name: "Xuelong Li",
@@ -254,6 +254,7 @@ const buttons = [
   {
     disabled: false,
     name: "Paper",
+    link: "https://arxiv.org/pdf/2502.18041",
     component: Document,
   },
   {
