@@ -75,7 +75,7 @@ const authors = [
     name: "Liansheng Wang",
     icon: "./icon/anya.jpg",
     // homepage: "https://",
-    address_flag: "1"
+    address_flag: "1,8"
   },
   {
     name: "Penghui Yang",
@@ -258,9 +258,9 @@ const buttons = [
     component: Document,
   },
   {
-    disabled: true,
+    disabled: false,
     name: "Code",
-    link: "https://github.com/JunyaoHu/academic-project-page-template-vue",
+    link: "https://github.com/SHAILAB-IPEC/OpenFly-Platform",
     component: Files,
   },
   // {
