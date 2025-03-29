@@ -9,19 +9,19 @@ const videos = [
     src: 'video/success_case/0.mp4'
   },
   {
-    src: 'video/success_case/1.mp4'
+    src: 'video/success_case/airsim_16.mp4'
   },
   {
-    src: 'video/success_case/3.mp4'
+    src: 'video/success_case/airsim_18.mp4'
   },
   {
-    src: 'video/success_case/5.mp4'
+    src: 'video/success_case/airsim_23.mp4'
   },
   {
-    src: 'video/success_case/6.mp4'
+    src: 'video/success_case/airsim_26.mp4'
   },
   {
-    src: 'video/success_case/7.mp4'
+    src: 'video/success_case/airsim_sh.mp4'
   }
 ];
 

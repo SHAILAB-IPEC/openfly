@@ -270,8 +270,15 @@ const buttons = [
   //   component: MagicStick,
   // },
   {
-    disabled: true,
-    name: "Dataset",
+    disabled: false,
+    name: "Dataset(HF)",
+    link: "https://huggingface.co/datasets/IPEC-COMMUNITY/OpenFly",
+    component: Picture,
+  },
+  {
+    disabled: false,
+    name: "Dataset(OD)",
+    link: "https://openxlab.org.cn/datasets/liujunli_1/OpenFly",
     component: Picture,
   }
 ]
