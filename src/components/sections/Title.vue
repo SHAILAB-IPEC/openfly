@@ -271,13 +271,13 @@ const buttons = [
   // },
   {
     disabled: false,
-    name: "Dataset(HF)",
+    name: "Dataset (HuggingFace)",
     link: "https://huggingface.co/datasets/IPEC-COMMUNITY/OpenFly",
     component: Picture,
   },
   {
     disabled: false,
-    name: "Dataset(OD)",
+    name: "Dataset (OpenXLab)",
     link: "https://openxlab.org.cn/datasets/liujunli_1/OpenFly",
     component: Picture,
   }
