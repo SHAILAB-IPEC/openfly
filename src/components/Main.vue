@@ -74,5 +74,5 @@ export default {
   
   
   <!-- <ImageSelector/> -->
-  <!-- <BibTeX/> -->
+  <BibTeX/>
 </template>
